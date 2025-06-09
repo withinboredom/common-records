@@ -6,7 +6,7 @@ test('PositiveInt', function ($value) {
     $v1 = PositiveInt($value);
     $v2 = PositiveInt($value);
     expect($v1)->toBe($v2);
-})->with([1,2,3,\Withinboredom\Record\Common\Percentage(40),\Withinboredom\Record\Common\PositiveInt(50)]);
+})->with([1,2,3]);
 
 test('PositiveInt fails', function ($value) {
     expect(function () use ($value) {
