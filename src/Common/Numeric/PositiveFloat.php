@@ -16,7 +16,7 @@ readonly class PositiveFloat extends \Withinboredom\Record
      */
     public static function from(float|PositiveFloat $value): self
     {
-        if (!$value instanceof self && $value < 1) {
+        if (!$value instanceof self && $value <= 0) {
             throw new \InvalidArgumentException('Value must be positive');
         }
 

@@ -143,7 +143,7 @@ PHP,
             ],
             'accepts' => [PositiveInt::class],
             'rule' => <<<PHP
-		if(!\$value instanceof self && \$value < 0 || \$value > 100) {
+		if(!\$value instanceof self && (\$value < 0 || \$value > 100)) {
 			throw new \InvalidArgumentException('Value must be between 0 and 100');
 		}
 PHP,
