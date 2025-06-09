@@ -224,7 +224,7 @@ PHP,
         ],
         'TrimmedString' => [
             ...$strings,
-            'doctype' => 'trimmed-string|NonEmptyString|TrimmedString|NonEmptyString|LowercaseString|UppercaseString|AlphaString|AlphaNumericString|Slug|LiteralString',
+            'doctype' => 'string|NonEmptyString|TrimmedString|NonEmptyString|LowercaseString|UppercaseString|AlphaString|AlphaNumericString|Slug|LiteralString',
             'accepts' => [
                 NonEmptyString::class,
                 LowercaseString::class,
@@ -276,7 +276,7 @@ PHP,
         ],
         'UppercaseString' => [
             ...$strings,
-            'doctype' => 'uppercase-string|NonEmptyString|TrimmedString|LowercaseString|UppercaseString|NonEmptyString|AlphaString|AlphaNumericString|Slug|LiteralString',
+            'doctype' => 'string|NonEmptyString|TrimmedString|LowercaseString|UppercaseString|NonEmptyString|AlphaString|AlphaNumericString|Slug|LiteralString',
             'accepts' => [
                 NonEmptyString::class,
                 TrimmedString::class,
@@ -302,7 +302,7 @@ PHP,
         ],
         'AlphaString' => [
             ...$strings,
-            'doctype' => 'alpha-string|NonEmptyString|TrimmedString|LowercaseString|UppercaseString|AlphaString|NonEmptyString|AlphaNumericString|Slug|LiteralString',
+            'doctype' => 'string|NonEmptyString|TrimmedString|LowercaseString|UppercaseString|AlphaString|NonEmptyString|AlphaNumericString|Slug|LiteralString',
             'accepts' => [
                 NonEmptyString::class,
                 TrimmedString::class,
@@ -328,7 +328,7 @@ PHP,
         ],
         'AlphaNumericString' => [
             ...$strings,
-            'doctype' => 'alpha-numeric-string|NonEmptyString|TrimmedString|LowercaseString|UppercaseString|AlphaString|AlphaNumericString|NonEmptyString|Slug|LiteralString',
+            'doctype' => 'string|NonEmptyString|TrimmedString|LowercaseString|UppercaseString|AlphaString|AlphaNumericString|NonEmptyString|Slug|LiteralString',
             'accepts' => [
                 NonEmptyString::class,
                 TrimmedString::class,
@@ -380,7 +380,7 @@ PHP,
         ],
         'LiteralString' => [
             ...$strings,
-            'doctype' => 'literal-string',
+            'doctype' => ['literal-string', LiteralString::class],
             'rule' => '',
             'tests' => [
                 'pass' => ['pass'],

@@ -11,7 +11,7 @@ readonly class LiteralString extends \Withinboredom\Record
     public string $value;
 
     /**
-     * @param $value literal-string
+     * @param $value literal-string|\Withinboredom\Record\Common\Stringy\LiteralString
      * @return self
      */
     public static function from(string|LiteralString $value): self

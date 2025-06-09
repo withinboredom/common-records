@@ -11,7 +11,7 @@ readonly class AlphaNumericString extends \Withinboredom\Record
     public string $value;
 
     /**
-     * @param $value alpha-numeric-string|NonEmptyString|TrimmedString|LowercaseString|UppercaseString|AlphaString|AlphaNumericString|NonEmptyString|Slug|LiteralString
+     * @param $value string|NonEmptyString|TrimmedString|LowercaseString|UppercaseString|AlphaString|AlphaNumericString|NonEmptyString|Slug|LiteralString
      * @return self
      */
     public static function from(string|AlphaNumericString|\Withinboredom\Record\Common\Stringy\NonEmptyString|\Withinboredom\Record\Common\Stringy\TrimmedString|\Withinboredom\Record\Common\Stringy\LowercaseString|\Withinboredom\Record\Common\Stringy\UppercaseString|\Withinboredom\Record\Common\Stringy\AlphaString|\Withinboredom\Record\Common\Stringy\Slug|\Withinboredom\Record\Common\Stringy\LiteralString $value): self

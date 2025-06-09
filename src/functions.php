@@ -108,7 +108,7 @@ function NonEmptyString(string|NonEmptyString|\Withinboredom\Record\Common\Strin
 use Withinboredom\Record\Common\Stringy\TrimmedString;
 
 /**
- * @param $value trimmed-string|NonEmptyString|TrimmedString|NonEmptyString|LowercaseString|UppercaseString|AlphaString|AlphaNumericString|Slug|LiteralString
+ * @param $value string|NonEmptyString|TrimmedString|NonEmptyString|LowercaseString|UppercaseString|AlphaString|AlphaNumericString|Slug|LiteralString
  * @return TrimmedString
  */
 function TrimmedString(string|TrimmedString|\Withinboredom\Record\Common\Stringy\NonEmptyString|\Withinboredom\Record\Common\Stringy\LowercaseString|\Withinboredom\Record\Common\Stringy\UppercaseString|\Withinboredom\Record\Common\Stringy\AlphaString|\Withinboredom\Record\Common\Stringy\AlphaNumericString|\Withinboredom\Record\Common\Stringy\Slug|\Withinboredom\Record\Common\Stringy\LiteralString $value): TrimmedString
@@ -130,7 +130,7 @@ function LowercaseString(string|LowercaseString|\Withinboredom\Record\Common\Str
 use Withinboredom\Record\Common\Stringy\UppercaseString;
 
 /**
- * @param $value uppercase-string|NonEmptyString|TrimmedString|LowercaseString|UppercaseString|NonEmptyString|AlphaString|AlphaNumericString|Slug|LiteralString
+ * @param $value string|NonEmptyString|TrimmedString|LowercaseString|UppercaseString|NonEmptyString|AlphaString|AlphaNumericString|Slug|LiteralString
  * @return UppercaseString
  */
 function UppercaseString(string|UppercaseString|\Withinboredom\Record\Common\Stringy\NonEmptyString|\Withinboredom\Record\Common\Stringy\TrimmedString|\Withinboredom\Record\Common\Stringy\LowercaseString|\Withinboredom\Record\Common\Stringy\AlphaString|\Withinboredom\Record\Common\Stringy\AlphaNumericString|\Withinboredom\Record\Common\Stringy\Slug|\Withinboredom\Record\Common\Stringy\LiteralString $value): UppercaseString
@@ -141,7 +141,7 @@ function UppercaseString(string|UppercaseString|\Withinboredom\Record\Common\Str
 use Withinboredom\Record\Common\Stringy\AlphaString;
 
 /**
- * @param $value alpha-string|NonEmptyString|TrimmedString|LowercaseString|UppercaseString|AlphaString|NonEmptyString|AlphaNumericString|Slug|LiteralString
+ * @param $value string|NonEmptyString|TrimmedString|LowercaseString|UppercaseString|AlphaString|NonEmptyString|AlphaNumericString|Slug|LiteralString
  * @return AlphaString
  */
 function AlphaString(string|AlphaString|\Withinboredom\Record\Common\Stringy\NonEmptyString|\Withinboredom\Record\Common\Stringy\TrimmedString|\Withinboredom\Record\Common\Stringy\LowercaseString|\Withinboredom\Record\Common\Stringy\UppercaseString|\Withinboredom\Record\Common\Stringy\AlphaNumericString|\Withinboredom\Record\Common\Stringy\Slug|\Withinboredom\Record\Common\Stringy\LiteralString $value): AlphaString
@@ -152,7 +152,7 @@ function AlphaString(string|AlphaString|\Withinboredom\Record\Common\Stringy\Non
 use Withinboredom\Record\Common\Stringy\AlphaNumericString;
 
 /**
- * @param $value alpha-numeric-string|NonEmptyString|TrimmedString|LowercaseString|UppercaseString|AlphaString|AlphaNumericString|NonEmptyString|Slug|LiteralString
+ * @param $value string|NonEmptyString|TrimmedString|LowercaseString|UppercaseString|AlphaString|AlphaNumericString|NonEmptyString|Slug|LiteralString
  * @return AlphaNumericString
  */
 function AlphaNumericString(string|AlphaNumericString|\Withinboredom\Record\Common\Stringy\NonEmptyString|\Withinboredom\Record\Common\Stringy\TrimmedString|\Withinboredom\Record\Common\Stringy\LowercaseString|\Withinboredom\Record\Common\Stringy\UppercaseString|\Withinboredom\Record\Common\Stringy\AlphaString|\Withinboredom\Record\Common\Stringy\Slug|\Withinboredom\Record\Common\Stringy\LiteralString $value): AlphaNumericString
@@ -174,7 +174,7 @@ function Slug(string|Slug|\Withinboredom\Record\Common\Stringy\NonEmptyString|\W
 use Withinboredom\Record\Common\Stringy\LiteralString;
 
 /**
- * @param $value literal-string
+ * @param $value literal-string|\Withinboredom\Record\Common\Stringy\LiteralString
  * @return LiteralString
  */
 function LiteralString(string|LiteralString $value): LiteralString
