@@ -6,19 +6,17 @@ namespace Withinboredom\Record\Common\Stringy;
  * This is a generated file. Do not edit.
  */
 
-readonly class AlphaString extends \Withinboredom\Record
+readonly class LiteralString extends \Withinboredom\Record
 {
     public string $value;
 
     /**
-     * @param $value alpha-string
+     * @param $value literal-string
      * @return self
      */
-    public static function from(string|AlphaString $value): self
+    public static function from(string|LiteralString $value): self
     {
-        if (!$value instanceof self && !preg_match('/^[a-zA-Z]+$/', $value)) {
-            throw new \InvalidArgumentException('Value must be alpha');
-        }
+
 
         $id ??= $value;
 

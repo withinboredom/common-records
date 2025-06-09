@@ -20,7 +20,8 @@
         "withinboredom/records": "^0.1.0"
     },
     "require-dev": {
-        "pestphp/pest": "^3.8"
+        "pestphp/pest": "^3.8",
+        "laravel/pint": "^1.22"
     },
     "config": {
         "allow-plugins": {

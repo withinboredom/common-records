@@ -1,7 +1,7 @@
 <?php
 
 $strings = [
-	'extra' => <<<PHP
+    'extra' => <<<PHP
 		public function __toString(): string {
 			return \$this->value;
 		}
@@ -18,158 +18,178 @@ $strings = [
 			return \Withinboredom\Record\Common\TrimmedString(\\trim(\$this()));
 		}
 PHP,
-	'baseType' => 'string',
-	'acceptsSelf' => true,
+    'baseType' => 'string',
+    'acceptsSelf' => true,
 ];
 
 $scalars = [
-	'Numeric' => [
-		'PositiveInt' => [
-			'baseType' => 'int',
-			'acceptsSelf' => true,
-			'rule' => <<<PHP
+    'Numeric' => [
+        'PositiveInt' => [
+            'baseType' => 'int',
+            'acceptsSelf' => true,
+            'doctype' => 'positive-int',
+            'rule' => <<<PHP
 		if(!\$value instanceof self && \$value < 1) {
 			throw new \InvalidArgumentException('Value must be positive');
 		}
 PHP,
-			'extra' => '',
-		],
-		'NonNegativeInt' => [
-			'baseType' => 'int',
-			'acceptsSelf' => true,
-			'rule' => <<<PHP
+            'extra' => '',
+        ],
+        'NonNegativeInt' => [
+            'baseType' => 'int',
+            'acceptsSelf' => true,
+            'doctype' => 'non-negative-int',
+            'rule' => <<<PHP
 		if(!\$value instanceof self && \$value < 0) {
 			throw new \InvalidArgumentException('Value must be non-negative');
 		}
 PHP,
-			'extra' => '',
-		],
-		'NegativeInt' => [
-			'baseType' => 'int',
-			'acceptsSelf' => true,
-			'extra' => '',
-			'rule' => <<<PHP
+            'extra' => '',
+        ],
+        'NegativeInt' => [
+            'baseType' => 'int',
+            'acceptsSelf' => true,
+            'doctype' => 'negative-int',
+            'extra' => '',
+            'rule' => <<<PHP
 		if(!\$value instanceof self && \$value > 0) {
 			throw new \InvalidArgumentException('Value must be negative');
 		}
 PHP,
-		],
-		'NonZeroInt' => [
-			'baseType' => 'int',
-			'acceptsSelf' => true,
-			'extra' => '',
-			'rule' => <<<PHP
+        ],
+        'NonZeroInt' => [
+            'baseType' => 'int',
+            'acceptsSelf' => true,
+            'doctype' => 'non-zero-int',
+            'extra' => '',
+            'rule' => <<<PHP
 		if(!\$value instanceof self && \$value === 0) {
 			throw new \InvalidArgumentException('Value must not be zero');
 		}
 PHP,
-		],
-		'Percentage' => [
-			'baseType' => 'int',
-			'acceptsSelf' => true,
-			'extra' => '',
-			'rule' => <<<PHP
+        ],
+        'Percentage' => [
+            'baseType' => 'int',
+            'acceptsSelf' => true,
+            'doctype' => 'int<0,100>',
+            'extra' => '',
+            'rule' => <<<PHP
 		if(!\$value instanceof self && \$value < 0 || \$value > 100) {
 			throw new \InvalidArgumentException('Value must be between 0 and 100');
 		}
 PHP,
-		],
-		'PositiveFloat' => [
-			'baseType' => 'float',
-			'acceptsSelf' => true,
-			'extra' => '',
-			'rule' => <<<PHP
+        ],
+        'PositiveFloat' => [
+            'baseType' => 'float',
+            'acceptsSelf' => true,
+            'doctype' => 'positive-float',
+            'extra' => '',
+            'rule' => <<<PHP
 		if(!\$value instanceof self && \$value < 1) {
 			throw new \InvalidArgumentException('Value must be positive');
 		}
 PHP,
-		],
-		'NegativeFloat' => [
-			'baseType' => 'float',
-			'acceptsSelf' => true,
-			'extra' => '',
-			'rule' => <<<PHP
+        ],
+        'NegativeFloat' => [
+            'baseType' => 'float',
+            'acceptsSelf' => true,
+            'doctype' => 'negative-float',
+            'extra' => '',
+            'rule' => <<<PHP
 		if(!\$value instanceof self && \$value > 0) {
 			throw new \InvalidArgumentException('Value must be negative');
 		}
 PHP,
-		],
-		'NonZeroFloat' => [
-			'baseType' => 'float',
-			'acceptsSelf' => true,
-			'extra' => '',
-			'rule' => <<<PHP
+        ],
+        'NonZeroFloat' => [
+            'baseType' => 'float',
+            'acceptsSelf' => true,
+            'doctype' => 'non-zero-float',
+            'extra' => '',
+            'rule' => <<<PHP
 		if(!\$value instanceof self && \$value === 0) {
 			throw new \InvalidArgumentException('Value must not be zero');
 		}
 PHP,
-		],
-	],
-	'Stringy' => [
-		'NonEmptyString' => [
-			...$strings,
-			'rule' => <<<PHP
+        ],
+    ],
+    'Stringy' => [
+        'NonEmptyString' => [
+            ...$strings,
+            'doctype' => 'non-empty-string',
+            'rule' => <<<PHP
 		if(!\$value instanceof self && trim(\$value) === '') {
 			throw new \InvalidArgumentException('Value must not be empty');
 		}
-PHP
-		],
-		'TrimmedString' => [
-			...$strings,
-			'rule' => <<<PHP
+PHP,
+        ],
+        'TrimmedString' => [
+            ...$strings,
+            'doctype' => 'trimmed-string',
+            'rule' => <<<PHP
 		if(!\$value instanceof self && trim(\$value) !== \$value) {
 			throw new \InvalidArgumentException('Value must be trimmed');
 		}
-PHP
-		],
-		'LowercaseString' => [
-			...$strings,
-			'rule' => <<<PHP
+PHP,
+        ],
+        'LowercaseString' => [
+            ...$strings,
+            'doctype' => 'lowercase-string',
+            'rule' => <<<PHP
 		if(!\$value instanceof self && strtolower(\$value) !== \$value) {
 			throw new \InvalidArgumentException('Value must be lowercase');
 		}
-PHP
-		],
-		'UppercaseString' => [
-			...$strings,
-			'rule' => <<<PHP
+PHP,
+        ],
+        'UppercaseString' => [
+            ...$strings,
+            'doctype' => 'uppercase-string',
+            'rule' => <<<PHP
 		if(!\$value instanceof self && strtoupper(\$value) !== \$value) {
 			throw new \InvalidArgumentException('Value must be uppercase');
 		}
-PHP
-		],
-		'AlphaString' => [
-			...$strings,
-			'rule' => <<<PHP
+PHP,
+        ],
+        'AlphaString' => [
+            ...$strings,
+            'doctype' => 'alpha-string',
+            'rule' => <<<PHP
 		if(!\$value instanceof self && !preg_match('/^[a-zA-Z]+$/', \$value)) {
 			throw new \InvalidArgumentException('Value must be alpha');
 		}
-PHP
-		],
-		'AlphaNumericString' => [
-			...$strings,
-			'rule' => <<<PHP
+PHP,
+        ],
+        'AlphaNumericString' => [
+            ...$strings,
+            'doctype' => 'alpha-numeric-string',
+            'rule' => <<<PHP
 		if(!\$value instanceof self && !preg_match('/^[a-zA-Z0-9]+$/', \$value)) {
 			throw new \InvalidArgumentException('Value must be alpha-numeric');
 		}
-PHP
-		],
-		'Slug' => [
-			...$strings,
-			'rule' => <<<PHP
+PHP,
+        ],
+        'Slug' => [
+            ...$strings,
+            'doctype' => 'string',
+            'rule' => <<<PHP
 		if(!\$value instanceof self && !preg_match('/^[a-zA-Z0-9-]+$/', \$value)) {
 			throw new \InvalidArgumentException('Value must be alpha-numeric or hyphen');
 		}
 PHP,
-		],
-	],
-	'Dates' => [
-		'DateTime' => [
-			'baseType' => '\DateTimeImmutable',
-			'acceptsSelf' => true,
-			'extra' => '',
-			'accepts' => ['\DateTime', 'string'],
-			'rule' => <<<PHP
+        ],
+        'LiteralString' => [
+            ...$strings,
+            'doctype' => 'literal-string',
+            'rule' => '',
+        ],
+    ],
+    'Dates' => [
+        'DateTime' => [
+            'baseType' => '\DateTimeImmutable',
+            'acceptsSelf' => true,
+            'extra' => '',
+            'accepts' => ['\DateTime', 'string'],
+            'rule' => <<<PHP
 		if(!\$value instanceof self && is_string(\$value)) {
 			\$value = new \DateTimeImmutable(\$value);
 		}
@@ -178,10 +198,10 @@ PHP,
 		} else {
 			\$id = \$value()->format('Y-m-d H:i:s.v');
 		}
-PHP
+PHP,
 
-		]
-	]
+        ],
+    ],
 ];
 
 $functions = <<<PHP
@@ -194,15 +214,16 @@ namespace Withinboredom\Record\Common;
 
 PHP;
 
+foreach ($scalars as $namespace => $types) {
+    foreach ($types as $type => $details) {
+        $accepts = $details['acceptsSelf'] ? "{$details['baseType']}|{$type}" : $details['baseType'];
+        if (isset($details['accepts'])) {
+            $accepts .= '|' . implode('|', $details['accepts']);
+        }
 
-foreach($scalars as $namespace => $types) {
-	foreach($types as $type => $details) {
-		$accepts = $details['acceptsSelf'] ? "{$details['baseType']}|{$type}" : $details['baseType'];
-		if(isset($details['accepts'])) {
-			$accepts .= '|' . implode('|', $details['accepts']);
-		}
+        $doctype = $details['doctype'] ?? $type;
 
-		$template = <<<PHP
+        $template = <<<PHP
 <?php
 namespace Withinboredom\Record\Common\\$namespace;
 
@@ -213,6 +234,10 @@ namespace Withinboredom\Record\Common\\$namespace;
 readonly class {$type} extends \Withinboredom\Record {
 	public {$details['baseType']} \$value;
 	
+	/**
+	 * @param \$value {$doctype}
+	 * @return self
+	 */
 	public static function from({$accepts} \$value): self {
 {$details['rule']}
 
@@ -232,20 +257,24 @@ readonly class {$type} extends \Withinboredom\Record {
 {$details['extra']}
 }
 PHP;
-		file_put_contents("src/Common/{$namespace}/{$type}.php", $template);
-		echo "Wrote {$namespace}/{$type}\n";
+        file_put_contents("src/Common/{$namespace}/{$type}.php", $template);
+        echo "Wrote {$namespace}/{$type}\n";
 
-		$functions .= <<<PHP
+        $functions .= <<<PHP
 
 use Withinboredom\Record\Common\\$namespace\\$type;
 
+/**
+ * @param \$value {$doctype}
+ * @return {$type} 
+ */
 function {$type}({$accepts} \$value): {$type} {
   return {$type}::from(\$value);
 }
 
 PHP;
 
-	}
+    }
 }
 
 file_put_contents('src/functions.php', $functions);
