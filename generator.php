@@ -163,6 +163,8 @@ PHP,
 		}
 		if(!\$value instanceof self) {
 			\$id = \$value->format('Y-m-d H:i:s.v');
+		} else {
+			\$id = \$value()->format('Y-m-d H:i:s.v');
 		}
 PHP
 
