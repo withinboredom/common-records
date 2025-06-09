@@ -1,5 +1,11 @@
 # Common Records
 
+Install:
+
+```
+composer require withinboredom/common-records
+```
+
 This is a generated collection of common records (see [generator.php](generator.php)).
 
 Included:
