@@ -474,6 +474,15 @@ readonly class {$type} extends \Withinboredom\Record {
 		});
 	}
 	
+	protected static function deriveIdentity(mixed ...\$args): object|array|string|int|float {
+		\$value = \$args[0] ?? \$args['value'] ?? throw new \InvalidArgumentException('Missing value');
+
+{$details['rule']}
+
+		\$id ??= \$value;
+		return \$id;
+	}
+	
 	public function __invoke(): {$details['baseType']} {
 		return \$this->value;
 	}

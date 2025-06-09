@@ -37,6 +37,26 @@ readonly class DateTime extends \Withinboredom\Record
         });
     }
 
+    protected static function deriveIdentity(mixed ...$args): object|array|string|int|float
+    {
+        $value = $args[0] ?? $args['value'] ?? throw new \InvalidArgumentException('Missing value');
+
+        if ($value instanceof \Withinboredom\Record\Common\Stringy\NonEmptyString) {
+            $value = $value();
+        }
+        if (!$value instanceof self && is_string($value)) {
+            $value = new \DateTimeImmutable($value);
+        }
+        if (!$value instanceof self) {
+            $id = $value->format('Y-m-d H:i:s.v');
+        } else {
+            $id = $value()->format('Y-m-d H:i:s.v');
+        }
+
+        $id ??= $value;
+        return $id;
+    }
+
     public function __invoke(): \DateTimeImmutable
     {
         return $this->value;

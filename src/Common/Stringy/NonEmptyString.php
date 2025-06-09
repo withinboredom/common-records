@@ -33,6 +33,22 @@ readonly class NonEmptyString extends \Withinboredom\Record
         });
     }
 
+    protected static function deriveIdentity(mixed ...$args): object|array|string|int|float
+    {
+        $value = $args[0] ?? $args['value'] ?? throw new \InvalidArgumentException('Missing value');
+
+        if (!$value instanceof self && !is_string($value)) {
+            $value = $value();
+        }
+
+        if (!$value instanceof self && trim($value) === '') {
+            throw new \InvalidArgumentException('Value must not be empty');
+        }
+
+        $id ??= $value;
+        return $id;
+    }
+
     public function __invoke(): string
     {
         return $this->value;
