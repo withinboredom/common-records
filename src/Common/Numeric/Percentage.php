@@ -26,5 +26,5 @@ readonly class Percentage extends \Withinboredom\Record {
 		return $this->value;
 	}
 	
-	
+
 }

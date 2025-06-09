@@ -31,5 +31,5 @@ readonly class DateTime extends \Withinboredom\Record {
 		return $this->value;
 	}
 	
-	
+
 }
