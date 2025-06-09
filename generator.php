@@ -158,7 +158,7 @@ PHP,
                 'fail' => [0.0, -1.0, -2.0],
             ],
             'rule' => <<<PHP
-		if(!\$value instanceof self && \$value < 1) {
+		if(!\$value instanceof self && \$value <= 0) {
 			throw new \InvalidArgumentException('Value must be positive');
 		}
 PHP,
