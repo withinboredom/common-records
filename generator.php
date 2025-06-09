@@ -5,6 +5,18 @@ $strings = [
 		public function __toString(): string {
 			return \$this->value;
 		}
+
+		public function toLowercase(string|null \$encoding = null): \Withinboredom\Record\Common\Stringy\LowercaseString {
+			return \Withinboredom\Record\Common\LowercaseString(\mb_strtolower(\$this(), \$encoding));
+		}
+
+		public function toUppercase(string|null \$encoding = null): \Withinboredom\Record\Common\Stringy\UppercaseString {
+			return \Withinboredom\Record\Common\UppercaseString(\mb_strtoupper(\$this(), \$encoding));
+		}
+
+		public function trim(): \Withinboredom\Record\Common\Stringy\TrimmedString {
+			return \Withinboredom\Record\Common\TrimmedString(\\trim(\$this()));
+		}
 PHP,
 	'baseType' => 'string',
 	'acceptsSelf' => true,
@@ -217,7 +229,7 @@ readonly class {$type} extends \Withinboredom\Record {
 		return \$this->value;
 	}
 	
-	{$details['extra']}
+{$details['extra']}
 }
 PHP;
 		file_put_contents("src/Common/{$namespace}/{$type}.php", $template);

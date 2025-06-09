@@ -26,5 +26,5 @@ readonly class NonNegativeInt extends \Withinboredom\Record {
 		return $this->value;
 	}
 	
-	
+
 }

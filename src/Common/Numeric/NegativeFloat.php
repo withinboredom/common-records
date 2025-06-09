@@ -26,5 +26,5 @@ readonly class NegativeFloat extends \Withinboredom\Record {
 		return $this->value;
 	}
 	
-	
+
 }
