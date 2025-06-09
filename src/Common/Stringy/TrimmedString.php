@@ -11,11 +11,15 @@ readonly class TrimmedString extends \Withinboredom\Record
     public string $value;
 
     /**
-     * @param $value trimmed-string
+     * @param $value trimmed-string|NonEmptyString|TrimmedString|NonEmptyString|LowercaseString|UppercaseString|AlphaString|AlphaNumericString|Slug|LiteralString
      * @return self
      */
-    public static function from(string|TrimmedString $value): self
+    public static function from(string|TrimmedString|\Withinboredom\Record\Common\Stringy\NonEmptyString|\Withinboredom\Record\Common\Stringy\LowercaseString|\Withinboredom\Record\Common\Stringy\UppercaseString|\Withinboredom\Record\Common\Stringy\AlphaString|\Withinboredom\Record\Common\Stringy\AlphaNumericString|\Withinboredom\Record\Common\Stringy\Slug|\Withinboredom\Record\Common\Stringy\LiteralString $value): self
     {
+        if (!$value instanceof self && !is_string($value)) {
+            $value = $value();
+        }
+
         if (!$value instanceof self && trim($value) !== $value) {
             throw new \InvalidArgumentException('Value must be trimmed');
         }

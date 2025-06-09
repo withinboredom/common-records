@@ -11,11 +11,14 @@ readonly class NonZeroInt extends \Withinboredom\Record
     public int $value;
 
     /**
-     * @param $value non-zero-int
+     * @param $value non-zero-int|NonZeroInt|NegativeInt|NonNegativeInt|PositiveInt|Percentage
      * @return self
      */
-    public static function from(int|NonZeroInt $value): self
+    public static function from(int|NonZeroInt|\Withinboredom\Record\Common\Numeric\NegativeInt|\Withinboredom\Record\Common\Numeric\NonNegativeInt|\Withinboredom\Record\Common\Numeric\PositiveInt|\Withinboredom\Record\Common\Numeric\Percentage $value): self
     {
+        if (!is_int($value) && !$value instanceof self) {
+            $value = $value();
+        }
         if (!$value instanceof self && $value === 0) {
             throw new \InvalidArgumentException('Value must not be zero');
         }

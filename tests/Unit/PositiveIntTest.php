@@ -1,26 +1,15 @@
 <?php
 
-use Withinboredom\Record\Common\Numeric\PositiveInt;
-
 use function Withinboredom\Record\Common\PositiveInt;
 
-it('can be created from an int', function () {
-    $og = 5;
-    $int = PositiveInt($og);
-    expect($int)
-        ->toBeInstanceOf(PositiveInt::class)
-        ->and($int->value)->toBe($og)
-        ->and($int())->toBe($og);
-});
+test('PositiveInt', function ($value) {
+    $v1 = PositiveInt($value);
+    $v2 = PositiveInt($value);
+    expect($v1)->toBe($v2);
+})->with([1,2,3,\Withinboredom\Record\Common\Percentage(40),\Withinboredom\Record\Common\PositiveInt(50)]);
 
-it('fails on negative int', function () {
-    expect(function () {
-        PositiveInt(-1);
+test('PositiveInt fails', function ($value) {
+    expect(function () use ($value) {
+        PositiveInt($value);
     })->toThrow(\InvalidArgumentException::class);
-});
-
-it('accepts another positive int', function () {
-    $int = PositiveInt(5);
-    $other = PositiveInt($int);
-    expect($int)->toBe($other);
-});
+})->with([0,-1,-2]);

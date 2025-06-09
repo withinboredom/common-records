@@ -11,12 +11,12 @@ readonly class NegativeFloat extends \Withinboredom\Record
     public float $value;
 
     /**
-     * @param $value negative-float
+     * @param $value float|\Withinboredom\Record\Common\Numeric\NegativeFloat
      * @return self
      */
     public static function from(float|NegativeFloat $value): self
     {
-        if (!$value instanceof self && $value > 0) {
+        if (!$value instanceof self && $value >= 0.0) {
             throw new \InvalidArgumentException('Value must be negative');
         }
 

@@ -11,11 +11,15 @@ readonly class Slug extends \Withinboredom\Record
     public string $value;
 
     /**
-     * @param $value string
+     * @param $value string|NonEmptyString|TrimmedString|LowercaseString|UppercaseString|AlphaString|AlphaNumericString|Slug|LiteralString
      * @return self
      */
-    public static function from(string|Slug $value): self
+    public static function from(string|Slug|\Withinboredom\Record\Common\Stringy\NonEmptyString|\Withinboredom\Record\Common\Stringy\TrimmedString|\Withinboredom\Record\Common\Stringy\LowercaseString|\Withinboredom\Record\Common\Stringy\UppercaseString|\Withinboredom\Record\Common\Stringy\AlphaString|\Withinboredom\Record\Common\Stringy\AlphaNumericString|\Withinboredom\Record\Common\Stringy\LiteralString $value): self
     {
+        if (!$value instanceof self && !is_string($value)) {
+            $value = $value();
+        }
+
         if (!$value instanceof self && !preg_match('/^[a-zA-Z0-9-]+$/', $value)) {
             throw new \InvalidArgumentException('Value must be alpha-numeric or hyphen');
         }

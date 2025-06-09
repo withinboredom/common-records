@@ -11,10 +11,10 @@ readonly class Percentage extends \Withinboredom\Record
     public int $value;
 
     /**
-     * @param $value int<0,100>
+     * @param $value int<0,100>|Percentage
      * @return self
      */
-    public static function from(int|Percentage $value): self
+    public static function from(int|Percentage|\Withinboredom\Record\Common\Numeric\PositiveInt $value): self
     {
         if (!$value instanceof self && $value < 0 || $value > 100) {
             throw new \InvalidArgumentException('Value must be between 0 and 100');

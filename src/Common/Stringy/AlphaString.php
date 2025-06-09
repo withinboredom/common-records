@@ -11,11 +11,15 @@ readonly class AlphaString extends \Withinboredom\Record
     public string $value;
 
     /**
-     * @param $value alpha-string
+     * @param $value alpha-string|NonEmptyString|TrimmedString|LowercaseString|UppercaseString|AlphaString|NonEmptyString|AlphaNumericString|Slug|LiteralString
      * @return self
      */
-    public static function from(string|AlphaString $value): self
+    public static function from(string|AlphaString|\Withinboredom\Record\Common\Stringy\NonEmptyString|\Withinboredom\Record\Common\Stringy\TrimmedString|\Withinboredom\Record\Common\Stringy\LowercaseString|\Withinboredom\Record\Common\Stringy\UppercaseString|\Withinboredom\Record\Common\Stringy\AlphaNumericString|\Withinboredom\Record\Common\Stringy\Slug|\Withinboredom\Record\Common\Stringy\LiteralString $value): self
     {
+        if (!$value instanceof self && !is_string($value)) {
+            $value = $value();
+        }
+
         if (!$value instanceof self && !preg_match('/^[a-zA-Z]+$/', $value)) {
             throw new \InvalidArgumentException('Value must be alpha');
         }

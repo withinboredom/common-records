@@ -11,12 +11,12 @@ readonly class NegativeInt extends \Withinboredom\Record
     public int $value;
 
     /**
-     * @param $value negative-int
+     * @param $value negative-int|NegativeInt
      * @return self
      */
     public static function from(int|NegativeInt $value): self
     {
-        if (!$value instanceof self && $value > 0) {
+        if (!$value instanceof self && $value >= 0) {
             throw new \InvalidArgumentException('Value must be negative');
         }
 

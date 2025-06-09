@@ -11,11 +11,15 @@ readonly class UppercaseString extends \Withinboredom\Record
     public string $value;
 
     /**
-     * @param $value uppercase-string
+     * @param $value uppercase-string|NonEmptyString|TrimmedString|LowercaseString|UppercaseString|NonEmptyString|AlphaString|AlphaNumericString|Slug|LiteralString
      * @return self
      */
-    public static function from(string|UppercaseString $value): self
+    public static function from(string|UppercaseString|\Withinboredom\Record\Common\Stringy\NonEmptyString|\Withinboredom\Record\Common\Stringy\TrimmedString|\Withinboredom\Record\Common\Stringy\LowercaseString|\Withinboredom\Record\Common\Stringy\AlphaString|\Withinboredom\Record\Common\Stringy\AlphaNumericString|\Withinboredom\Record\Common\Stringy\Slug|\Withinboredom\Record\Common\Stringy\LiteralString $value): self
     {
+        if (!$value instanceof self && !is_string($value)) {
+            $value = $value();
+        }
+
         if (!$value instanceof self && strtoupper($value) !== $value) {
             throw new \InvalidArgumentException('Value must be uppercase');
         }

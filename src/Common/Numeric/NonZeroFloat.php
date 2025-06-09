@@ -11,12 +11,16 @@ readonly class NonZeroFloat extends \Withinboredom\Record
     public float $value;
 
     /**
-     * @param $value non-zero-float
+     * @param $value float|\Withinboredom\Record\Common\Numeric\NonZeroFloat|\Withinboredom\Record\Common\Numeric\NegativeFloat|\Withinboredom\Record\Common\Numeric\PositiveFloat
      * @return self
      */
-    public static function from(float|NonZeroFloat $value): self
+    public static function from(float|NonZeroFloat|\Withinboredom\Record\Common\Numeric\NegativeFloat|\Withinboredom\Record\Common\Numeric\PositiveFloat $value): self
     {
-        if (!$value instanceof self && $value === 0) {
+        if (!$value instanceof self && !is_float($value)) {
+            $value = $value();
+        }
+
+        if (!$value instanceof self && $value === 0.0) {
             throw new \InvalidArgumentException('Value must not be zero');
         }
 

@@ -11,11 +11,14 @@ readonly class DateTime extends \Withinboredom\Record
     public \DateTimeImmutable $value;
 
     /**
-     * @param $value DateTime
+     * @param $value \DateTimeImmutable|DateTime|\DateTime|string|\Withinboredom\Record\Common\Stringy\NonEmptyString
      * @return self
      */
-    public static function from(\DateTimeImmutable|DateTime|\DateTime|string $value): self
+    public static function from(\DateTimeImmutable|DateTime|\DateTime|string|\Withinboredom\Record\Common\Stringy\NonEmptyString $value): self
     {
+        if ($value instanceof \Withinboredom\Record\Common\Stringy\NonEmptyString) {
+            $value = $value();
+        }
         if (!$value instanceof self && is_string($value)) {
             $value = new \DateTimeImmutable($value);
         }

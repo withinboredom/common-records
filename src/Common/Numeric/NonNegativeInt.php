@@ -11,11 +11,15 @@ readonly class NonNegativeInt extends \Withinboredom\Record
     public int $value;
 
     /**
-     * @param $value non-negative-int
+     * @param $value non-negative-int|NonNegativeInt|PositiveInt
      * @return self
      */
-    public static function from(int|NonNegativeInt $value): self
+    public static function from(int|NonNegativeInt|\Withinboredom\Record\Common\Numeric\PositiveInt $value): self
     {
+        if ($value instanceof \Withinboredom\Record\Common\Numeric\PositiveInt) {
+            $value = $value();
+        }
+
         if (!$value instanceof self && $value < 0) {
             throw new \InvalidArgumentException('Value must be non-negative');
         }

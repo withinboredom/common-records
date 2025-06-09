@@ -11,7 +11,7 @@ readonly class PositiveFloat extends \Withinboredom\Record
     public float $value;
 
     /**
-     * @param $value positive-float
+     * @param $value positive-float|PositiveFloat
      * @return self
      */
     public static function from(float|PositiveFloat $value): self

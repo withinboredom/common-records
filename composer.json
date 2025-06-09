@@ -21,7 +21,8 @@
     },
     "require-dev": {
         "pestphp/pest": "^3.8",
-        "laravel/pint": "^1.22"
+        "laravel/pint": "^1.22",
+        "phpstan/phpstan": "^2.1"
     },
     "config": {
         "allow-plugins": {
