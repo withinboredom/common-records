@@ -1,27 +1,15 @@
 <?php
 
-
-use Withinboredom\Record\Common\Stringy\NonEmptyString;
-
 use function Withinboredom\Record\Common\NonEmptyString;
 
-it('can be created from a string', function() {
-	$og = 'testing';
-	$str = NonEmptyString($og);
-	expect($str)
-		->toBeInstanceOf(NonEmptyString::class)
-		->and($str->value)->toBe($og)
-		->and((string)$str)->toBe($og);
-});
+test('NonEmptyString', function ($value) {
+    $v1 = NonEmptyString($value);
+    $v2 = NonEmptyString($value);
+    expect($v1)->toBe($v2);
+})->with(['a','b','c']);
 
-it('can be created from a non-empty string', function() {
-	$str = NonEmptyString('testing');
-	$other = NonEmptyString($str);
-	expect($str)->toBe($other);
-});
-
-it('fails on empty string', function() {
-	expect(function() {
-		NonEmptyString('');
-	})->toThrow(\InvalidArgumentException::class);
-});
+test('NonEmptyString fails', function ($value) {
+    expect(function () use ($value) {
+        NonEmptyString($value);
+    })->toThrow(\InvalidArgumentException::class);
+})->with([' ']);

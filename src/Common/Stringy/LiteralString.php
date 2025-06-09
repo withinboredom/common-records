@@ -6,23 +6,17 @@ namespace Withinboredom\Record\Common\Stringy;
  * This is a generated file. Do not edit.
  */
 
-readonly class AlphaNumericString extends \Withinboredom\Record
+readonly class LiteralString extends \Withinboredom\Record
 {
     public string $value;
 
     /**
-     * @param $value string|NonEmptyString|TrimmedString|LowercaseString|UppercaseString|AlphaString|AlphaNumericString|NonEmptyString|Slug|LiteralString
+     * @param $value literal-string|\Withinboredom\Record\Common\Stringy\LiteralString
      * @return self
      */
-    public static function from(string|AlphaNumericString|\Withinboredom\Record\Common\Stringy\NonEmptyString|\Withinboredom\Record\Common\Stringy\TrimmedString|\Withinboredom\Record\Common\Stringy\LowercaseString|\Withinboredom\Record\Common\Stringy\UppercaseString|\Withinboredom\Record\Common\Stringy\AlphaString|\Withinboredom\Record\Common\Stringy\Slug|\Withinboredom\Record\Common\Stringy\LiteralString $value): self
+    public static function from(string|LiteralString $value): self
     {
-        if (!$value instanceof self && !is_string($value)) {
-            $value = $value();
-        }
 
-        if (!$value instanceof self && !preg_match('/^[a-zA-Z0-9]+$/', $value)) {
-            throw new \InvalidArgumentException('Value must be alpha-numeric');
-        }
 
         $id ??= $value;
 

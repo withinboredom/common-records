@@ -1,7 +1,10 @@
 {
-    "name": "withinboredom/common-records",
-    "type": "library",
-    "license": "MIT",
+    "authors": [
+        {
+            "name": "Robert Landers",
+            "email": "landers.robert@gmail.com"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Withinboredom\\Record\\": "src/"
@@ -10,21 +13,21 @@
             "src/functions.php"
         ]
     },
-    "authors": [
-        {
-            "name": "Robert Landers",
-            "email": "landers.robert@gmail.com"
-        }
-    ],
-    "require": {
-        "withinboredom/records": "^0.1.0"
-    },
-    "require-dev": {
-        "pestphp/pest": "^3.8"
-    },
     "config": {
         "allow-plugins": {
             "pestphp/pest-plugin": true
         }
-    }
+    },
+    "description": "Common scalar records",
+    "license": "MIT",
+    "name": "withinboredom/common-records",
+    "require": {
+        "withinboredom/records": "^0.1.0"
+    },
+    "require-dev": {
+        "pestphp/pest": "^3.8",
+        "laravel/pint": "^1.22",
+        "phpstan/phpstan": "^2.1"
+    },
+    "type": "library"
 }

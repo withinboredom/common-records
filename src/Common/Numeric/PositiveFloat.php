@@ -1,30 +1,38 @@
 <?php
+
 namespace Withinboredom\Record\Common\Numeric;
 
 /*
- * This is a generated file. Do not edit. 
+ * This is a generated file. Do not edit.
  */
 
-readonly class PositiveFloat extends \Withinboredom\Record {
-	public float $value;
-	
-	public static function from(float|PositiveFloat $value): self {
-		if(!$value instanceof self && $value < 1) {
-			throw new \InvalidArgumentException('Value must be positive');
-		}
+readonly class PositiveFloat extends \Withinboredom\Record
+{
+    public float $value;
 
-		$id ??= $value;
-		
-		return self::fromClosure($id instanceof self ? $id() : $id, static function() use ($value) {
-			$x = new self();
-			$x->value = $value;
-			return $x;
-		});
-	}
-	
-	public function __invoke(): float {
-		return $this->value;
-	}
-	
+    /**
+     * @param $value positive-float|PositiveFloat
+     * @return self
+     */
+    public static function from(float|PositiveFloat $value): self
+    {
+        if (!$value instanceof self && $value <= 0) {
+            throw new \InvalidArgumentException('Value must be positive');
+        }
+
+        $id ??= $value;
+
+        return self::fromClosure($id instanceof self ? $id() : $id, static function () use ($value) {
+            $x = new self();
+            $x->value = $value;
+            return $x;
+        });
+    }
+
+    public function __invoke(): float
+    {
+        return $this->value;
+    }
+
 
 }
