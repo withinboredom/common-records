@@ -27,6 +27,16 @@ readonly class LiteralString extends \Withinboredom\Record
         });
     }
 
+    protected static function deriveIdentity(mixed ...$args): object|array|string|int|float
+    {
+        $value = $args[0] ?? $args['value'] ?? throw new \InvalidArgumentException('Missing value');
+
+
+
+        $id ??= $value;
+        return $id;
+    }
+
     public function __invoke(): string
     {
         return $this->value;

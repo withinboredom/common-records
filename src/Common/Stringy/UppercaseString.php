@@ -33,6 +33,22 @@ readonly class UppercaseString extends \Withinboredom\Record
         });
     }
 
+    protected static function deriveIdentity(mixed ...$args): object|array|string|int|float
+    {
+        $value = $args[0] ?? $args['value'] ?? throw new \InvalidArgumentException('Missing value');
+
+        if (!$value instanceof self && !is_string($value)) {
+            $value = $value();
+        }
+
+        if (!$value instanceof self && strtoupper($value) !== $value) {
+            throw new \InvalidArgumentException('Value must be uppercase');
+        }
+
+        $id ??= $value;
+        return $id;
+    }
+
     public function __invoke(): string
     {
         return $this->value;
